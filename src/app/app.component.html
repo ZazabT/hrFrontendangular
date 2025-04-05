@@ -1,0 +1,25 @@
+
+<!-- Tool bar -->
+<mat-toolbar *ngIf="!isLoginOrRegisterPage()">
+  <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="close.set(!close())">
+    <mat-icon>menu</mat-icon>
+  </button> -->
+  <img height="200px" width="200px" src="logo.png" alt="logo" class="logo-img">
+</mat-toolbar>
+
+
+
+<!-- sidenav and content container -->
+<mat-sidenav-container *ngIf="!isLoginOrRegisterPage()">
+  <mat-sidenav opened mode="side" [style.width]="sidenavWidth()">
+   <app-custom-sidenav [close]= "close()"/>
+  </mat-sidenav>
+  <mat-sidenav-content [style.margin-left]="sidenavWidth()">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+
+<!-- If on login or register route, just show the content -->
+<router-outlet *ngIf="isLoginOrRegisterPage()"></router-outlet>

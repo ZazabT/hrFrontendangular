@@ -1,0 +1,49 @@
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  width: 100%;
+  gap: 8px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 8px 16px;
+  cursor: pointer;
+  gap: 18px;
+  box-sizing: border-box;
+  text-align: left;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.menu-item:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: rgb(255, 255, 255); /* Change text color when hovered */
+}
+
+.menu-item:active {
+  background-color: rgb(0, 123, 255); /* Active background color */
+  color: white; /* Text color when active */
+}
+
+.menu-icon {
+  font-size: 22px;
+  color: rgb(125, 125, 125);
+  margin-right: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-label {
+  font-weight: 500;
+  font-size: 18px;
+  color: rgb(125, 125, 125);
+  flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,71 @@
+<div class="employees-container">
+    <!-- Heading -->
+    <h1 class="page-title">Employees Overview</h1>
+    
+    <!-- Table -->
+    <table mat-table [dataSource]="employeesDataSource" class="mat-elevation-z8 employees-table">
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+  
+      <!-- First Name Column -->
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef> First Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+      </ng-container>
+  
+      <!-- Last Name Column -->
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef> Last Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+      </ng-container>
+  
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+  
+      <!-- Phone Column -->
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef> Phone </th>
+        <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+      </ng-container>
+  
+      <!-- Address Column -->
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef> Address </th>
+        <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+      </ng-container>
+  
+      <!-- Birth Date Column -->
+      <ng-container matColumnDef="birthDate">
+        <th mat-header-cell *matHeaderCellDef> Birth Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.birthDate | date:'mediumDate'}} </td>
+      </ng-container>
+  
+      <!-- Hire Date Column -->
+      <ng-container matColumnDef="hireDate">
+        <th mat-header-cell *matHeaderCellDef> Hire Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.hireDate | date:'mediumDate'}} </td>
+      </ng-container>
+  
+      <!-- Job Position ID Column -->
+      <ng-container matColumnDef="jobPositionId">
+        <th mat-header-cell *matHeaderCellDef> Job Position ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.jobPositionId}} </td>
+      </ng-container>
+  
+      <!-- Created At Column -->
+      <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef> Created At </th>
+        <td mat-cell *matCellDef="let element"> {{element.createdAt | date:'medium'}} </td>
+      </ng-container>
+  
+      <!-- Header and Row Definitions -->
+      <tr mat-header-row *matHeaderRowDef="employeesColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: employeesColumns;"></tr>
+    </table>
+</div>
