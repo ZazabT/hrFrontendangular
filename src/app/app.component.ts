@@ -25,6 +25,21 @@ export class AppComponent {
   close = signal(false);
 
   sidenavWidth = computed(() => {
-    return this.close() ? '65px' : '260px';
+    return this.close() ? '65px' : '300px';
   });
+
+  isDarkMode = false; // Track dark mode state
+
+
+  toggleDarkMode() {
+    this.isDarkMode = !this.isDarkMode;
+    // Add dark mode toggle logic (e.g., toggle a class on body)
+    document.body.classList.toggle('dark', this.isDarkMode);
+  }
+
+  logout() {
+    console.log('Logging out...');
+    // Add logout logic here
+  }
 }
+

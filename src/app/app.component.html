@@ -1,10 +1,30 @@
 
 <!-- Tool bar -->
-<mat-toolbar *ngIf="!isLoginOrRegisterPage()">
-  <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="close.set(!close())">
-    <mat-icon>menu</mat-icon>
-  </button> -->
-  <img height="120px" width="120px" src="logo3.png" alt="logo" class="logo-img">
+<mat-toolbar *ngIf="!isLoginOrRegisterPage()" class="bg-white shadow-md px-6 py-2 flex justify-between items-center">
+  <!-- Left Side: Menu Button and Logo -->
+  <div class="flex items-center space-x-4">
+    <button mat-icon-button 
+            class="text-gray-700 hover:text-lime-800 transition duration-200" 
+            aria-label="Toggle menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <img height="200px" width="200px" src="logo3.png" alt="logo" class="h-24 w-24 object-contain">
+  </div>
+
+  <!-- Right Side: Dark Mode and Logout Buttons -->
+  <div class="flex items-center space-x-4">
+    <button mat-icon-button 
+            class="text-gray-700 hover:text-lime-800 transition duration-200" 
+            aria-label="Toggle dark mode" 
+            (click)="toggleDarkMode()">
+      <mat-icon>{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
+    <button  
+            class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition duration-200 flex items-center space-x-2" 
+            (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
 </mat-toolbar>
 
 

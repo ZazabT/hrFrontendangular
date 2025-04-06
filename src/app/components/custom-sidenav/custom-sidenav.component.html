@@ -1,43 +1,45 @@
-<div class="h-full flex flex-col justify-between items-center pt-6 text-center transition-all duration-300 ease-in-out">
-    <!-- Profile Section -->
-    <div class="flex flex-col items-center p-6 space-y-3">
-      <img
-        [height]="pictureSize()"
-        [width]="pictureSize()"
-        class="object-cover h-22 w-22  mx-auto rounded-full border-2 border-gray-200 shadow-sm transition-transform duration-300 hover:scale-105"
-        src="data:image/png;base64,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"
-        alt="Profile image"
-      />
-      <div
-        class="text-center space-y-1 transition-all duration-300"
-        [ngClass]="{'opacity-0 h-0 overflow-hidden': sideNavClose(), 'opacity-100': !sideNavClose()}"
-      >
-        <h2 class="text-xl font-bold text-gray-900 tracking-wide">Tizazab Ayana</h2>
-        <p class="text-sm text-gray-400 font-medium tracking-wide">Tizazab752&#64;gmail.com</p>
-      </div>
-    </div>
-  
-    <!-- Navigation Section -->
-    <div class="flex-1 mt-4 px-4 icon-text-container  ">
-      <div class="menu-container">
-        <div
-          *ngFor="let item of menuItems()"
-          [routerLink]="item.route"
-          class="menu-item flex items-center w-full"
-        >
-          <mat-icon class="menu-icon" matListItemIcon>{{ item.icon }}</mat-icon>
-          <span class="menu-label">{{ item.label }}</span>
-        </div>
-      </div>
-      
-      </div>
-    <!-- Logout Section -->
-    <div class=" px-4 pb-6 ">
-      <mat-nav-list class="w-full border-t-2 border-gray-200">
-        <a mat-list-item class="flex items-center w-full" (click)="logout()">
-          <mat-icon matListItemIcon >logout</mat-icon>
-          <span matListItemTitle *ngIf="!sideNavClose()">Logout</span>
-        </a>
-      </mat-nav-list>
+<div class="h-full w-full flex flex-col justify-between shadow-xl  transition-all duration-300 ease-in-out">
+  <!-- Profile Section -->
+  <div class="flex flex-col items-center p-6 space-y-2 border-b border-gray-200">
+    <img
+      [height]="pictureSize()"
+      [width]="pictureSize()"
+      class="object-cover h-24 w-24 rounded-full border-4 border-lime-200 shadow-md transition-transform duration-300 hover:scale-105"
+      src="data:image/png;base64,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"
+      alt="Profile image"
+    />
+    <div
+      class="text-center space-y-2 transition-all duration-300"
+      [ngClass]="{'opacity-0 h-0 overflow-hidden': sideNavClose(), 'opacity-100': !sideNavClose()}"
+    >
+      <h2 class="text-xl font-bold text-gray-900 tracking-wide">Tizazab Ayana</h2>
+      <p class="text-sm text-gray-500 font-medium tracking-wide">Tizazab752&64gmail.com</p>
     </div>
   </div>
+
+  <!-- Navigation Section -->
+  <div class="flex-1 mt-4 px-4 justify-center ml-5">
+    <div class="space-y-1">
+      <div
+        *ngFor="let item of menuItems()"
+        [routerLink]="item.route"
+        class="flex items-center w-full px-4 py-3 text-gray-700 rounded-lg hover:bg-lime-50 hover:text-lime-800 transition duration-200 cursor-pointer"
+      >
+        <mat-icon class="mr-3 text-lime-600">{{ item.icon }}</mat-icon>
+        <span class="font-medium">{{ item.label }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logout Section -->
+  <div class="px-4 pb-6 border-t border-gray-200">
+    <a
+      mat-list-item
+      (click)="logout()"
+      class="flex items-center w-full px-4 py-3 text-gray-700 rounded-lg hover:bg-red-50 hover:text-red-600 transition duration-200 cursor-pointer"
+    >
+      <mat-icon class="mr-3 text-red-500">logout</mat-icon>
+      <span class="font-medium" *ngIf="!sideNavClose()">Logout</span>
+    </a>
+  </div>
+</div>

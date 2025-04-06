@@ -34,8 +34,8 @@ export class CustomSidenavComponent {
   pictureSize = computed(() => this.sideNavClose() ? '32' : '100');
   menuItems = signal<MenuItem[]>([
     { label: 'Dashboard', icon: 'dashboard', route: '/' },
-    { label: 'Employees', icon: 'people', route: '/employees' },
     { label: 'Departments', icon: 'business', route: '/departments' },
+    { label: 'Employees', icon: 'people', route: '/employees' },
     { label: 'Salaries', icon: 'attach_money', route: '/salaries' },
     { label: 'Positions', icon: 'work', route: '/positions' },
     { label: 'Leaves', icon: 'event_busy', route: '/leaves' },

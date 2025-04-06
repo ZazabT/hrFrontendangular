@@ -28,17 +28,6 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Softer shadow */
   }
   
-  /* Header Cells */
-  th.mat-header-cell {
-    background-color: #1a73e8; /* Blue header for contrast */
-    font-size: 1.1rem; /* Slightly larger text */
-    font-weight: 600;
-    color: #ffffff; /* White text on blue background */
-    padding: 18px; /* More padding */
-    text-align: left;
-    border-bottom: 3px solid #1565c0; /* Darker blue border */
-    text-transform: uppercase; /* Consistent with title */
-  }
   
   /* Data Cells */
   td.mat-cell {
@@ -49,12 +38,6 @@
     vertical-align: middle; /* Center content vertically */
   }
   
-  /* Row Hover Effect */
-  tr.mat-row:hover {
-    background-color: #e8f0fe; /* Light blue hover effect */
-    transition: background-color 0.3s ease; /* Smoother transition */
-    cursor: pointer; /* Indicate interactivity */
-  }
   
   /* Elevation and Shadow */
   .mat-elevation-z8 {

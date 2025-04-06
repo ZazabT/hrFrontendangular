@@ -1,109 +1,123 @@
-<div class="grid-container">
+<div class="p-10 bg-white min-h-screen">
+  <!-- Heading -->
+  <div class="flex justify-between items-center mb-10 p-6 ">
+    <div class="space-y-3">
+      <h1 class="text-4xl font-extrabold text-gray-800 tracking-tight">Dashboard Analytics</h1>
+      <p class="text-gray-600 text-base md:text-lg">Monitor and manage your department insights effectively</p>
+    </div>
+  </div>
+
   <!-- First Row: 4 Cards -->
-  <div class="grid-row">
-    <div class="grid-item">
-      <div class="content">
-        <div class="description">Total Departments</div>
-        <div class="count">125</div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+    <div class="bg-white border border-gray-300 rounded-xl shadow-md p-6 hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+      <div class="flex flex-col h-full">
+        <p class="text-gray-500 text-sm uppercase font-medium">Total Departments</p>
+        <p class="text-4xl font-extrabold text-lime-700 mt-2">12</p>
+        <p class="text-gray-600 mt-2">Active departments</p>
       </div>
     </div>
-    <div class="grid-item">
-      <div class="content">
-        <div class="description">Total Employees</div>
-        <div class="count">250</div>
+    <div class="bg-white border border-gray-300 rounded-xl shadow-md p-6 hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+      <div class="flex flex-col h-full">
+        <p class="text-gray-500 text-sm uppercase font-medium">Total Employees</p>
+        <p class="text-4xl font-extrabold text-lime-700 mt-2">245</p>
+        <p class="text-gray-600 mt-2">Across all departments</p>
       </div>
     </div>
-    <div class="grid-item">
-      <div class="content">
-        <div class="description">Monthly Total Expenses</div>
-        <div class="count">75</div>
+    <div class="bg-white border border-gray-300 rounded-xl shadow-md p-6 hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+      <div class="flex flex-col h-full">
+        <p class="text-gray-500 text-sm uppercase font-medium">Budget Allocation</p>
+        <p class="text-4xl font-extrabold text-lime-700 mt-2">$1.2M</p>
+        <p class="text-gray-600 mt-2">Annual budget</p>
       </div>
     </div>
-    <div class="grid-item">
-      <div class="content">
-        <div class="description">Total Positions</div>
-        <div class="count">10</div>
+    <div class="bg-white border border-gray-300 rounded-xl shadow-md p-6 hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+      <div class="flex flex-col h-full">
+        <p class="text-gray-500 text-sm uppercase font-medium">Open Positions</p>
+        <p class="text-4xl font-extrabold text-lime-700 mt-2">8</p>
+        <p class="text-gray-600 mt-2">Hiring in progress</p>
       </div>
     </div>
   </div>
 
   <!-- Second Row: 1 Smaller and 1 Wider Card -->
-  <div class="grid-row">
-    <div class="grid-item small">
-      <table>
+  <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-6">
+    <div class="lg:col-span-1 bg-white rounded-xl shadow-md p-6 h-[400px] overflow-auto">
+      <h3 class="text-lg font-semibold text-gray-800 mb-4">Department Budgets</h3>
+      <table class="w-full text-left">
         <thead>
-          <tr>
-            <th>Department</th>
-            <th>Budget</th>
+          <tr class="bg-lime-50 text-gray-700">
+            <th class="p-3 font-semibold">Department</th>
+            <th class="p-3 font-semibold">Budget</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>HR</td>
-            <td>$50,000</td>
+          <tr class="hover:bg-gray-50 transition duration-150">
+            <td class="p-3 text-gray-600">HR</td>
+            <td class="p-3 text-gray-600">$50,000</td>
           </tr>
-          <tr>
-            <td>IT</td>
-            <td>$120,000</td>
+          <tr class="hover:bg-gray-50 transition duration-150">
+            <td class="p-3 text-gray-600">IT</td>
+            <td class="p-3 text-gray-600">$120,000</td>
           </tr>
-          <tr>
-            <td>HR</td>
-            <td>$50,000</td>
+          <tr class="hover:bg-gray-50 transition duration-150">
+            <td class="p-3 text-gray-600">HR</td>
+            <td class="p-3 text-gray-600">$50,000</td>
           </tr>
-          <tr>
-            <td>IT</td>
-            <td>$120,000</td>
+          <tr class="hover:bg-gray-50 transition duration-150">
+            <td class="p-3 text-gray-600">IT</td>
+            <td class="p-3 text-gray-600">$120,000</td>
           </tr>
-          <tr>
-            <td>HR</td>
-            <td>$50,000</td>
+          <tr class="hover:bg-gray-50 transition duration-150">
+            <td class="p-3 text-gray-600">HR</td>
+            <td class="p-3 text-gray-600">$50,000</td>
           </tr>
-          <tr>
-            <td>IT</td>
-            <td>$120,000</td>
+          <tr class="hover:bg-gray-50 transition duration-150">
+            <td class="p-3 text-gray-600">IT</td>
+            <td class="p-3 text-gray-600">$120,000</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <div class="grid-item wide">
-      <table>
+    <div class="lg:col-span-3 bg-white rounded-xl shadow-md p-6 h-[400px] overflow-auto">
+      <h3 class="text-lg font-semibold text-gray-800 mb-4">Employee Overview</h3>
+      <table class="w-full text-left">
         <thead>
-          <tr>
-            <th>Employee</th>
-            <th>Role</th>
-            <th>Department</th>
+          <tr class="bg-lime-50 text-gray-700">
+            <th class="p-3 font-semibold">Employee</th>
+            <th class="p-3 font-semibold">Role</th>
+            <th class="p-3 font-semibold">Department</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>John Doe</td>
-            <td>Manager</td>
-            <td>HR</td>
+          <tr class="hover:bg-gray-50 transition duration-150">
+            <td class="p-3 text-gray-600">John Doe</td>
+            <td class="p-3 text-gray-600">Manager</td>
+            <td class="p-3 text-gray-600">HR</td>
           </tr>
-          <tr>
-            <td>Jane Smith</td>
-            <td>Developer</td>
-            <td>IT</td>
+          <tr class="hover:bg-gray-50 transition duration-150">
+            <td class="p-3 text-gray-600">Jane Smith</td>
+            <td class="p-3 text-gray-600">Developer</td>
+            <td class="p-3 text-gray-600">IT</td>
           </tr>
-          <tr>
-            <td>John Doe</td>
-            <td>Manager</td>
-            <td>HR</td>
+          <tr class="hover:bg-gray-50 transition duration-150">
+            <td class="p-3 text-gray-600">John Doe</td>
+            <td class="p-3 text-gray-600">Manager</td>
+            <td class="p-3 text-gray-600">HR</td>
           </tr>
-          <tr>
-            <td>Jane Smith</td>
-            <td>Developer</td>
-            <td>IT</td>
+          <tr class="hover:bg-gray-50 transition duration-150">
+            <td class="p-3 text-gray-600">Jane Smith</td>
+            <td class="p-3 text-gray-600">Developer</td>
+            <td class="p-3 text-gray-600">IT</td>
           </tr>
-          <tr>
-            <td>John Doe</td>
-            <td>Manager</td>
-            <td>HR</td>
+          <tr class="hover:bg-gray-50 transition duration-150">
+            <td class="p-3 text-gray-600">John Doe</td>
+            <td class="p-3 text-gray-600">Manager</td>
+            <td class="p-3 text-gray-600">HR</td>
           </tr>
-          <tr>
-            <td>Jane Smith</td>
-            <td>Developer</td>
-            <td>IT</td>
+          <tr class="hover:bg-gray-50 transition duration-150">
+            <td class="p-3 text-gray-600">Jane Smith</td>
+            <td class="p-3 text-gray-600">Developer</td>
+            <td class="p-3 text-gray-600">IT</td>
           </tr>
         </tbody>
       </table>
@@ -111,48 +125,48 @@
   </div>
 
   <!-- Third Row: 1 Full-Width Card -->
-  <div class="grid-row">
-    <div class="grid-item full-width">
-      <table>
+  <div class="grid grid-cols-1 gap-6">
+    <div class="bg-white rounded-xl shadow-md p-6 h-[450px] overflow-auto">
+      <h3 class="text-lg font-semibold text-gray-800 mb-4">Position Details</h3>
+      <table class="w-full text-left">
         <thead>
-          <tr>
-            <th>Position</th>
-            <th>Employee</th>
-            <th>Salary</th>
+          <tr class="bg-lime-50 text-gray-700">
+            <th class="p-3 font-semibold">Position</th>
+            <th class="p-3 font-semibold">Employee</th>
+            <th class="p-3 font-semibold">Salary</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Software Engineer</td>
-            <td>Jane Smith</td>
-            <td>$85,000</td>
+          <tr class="hover:bg-gray-50 transition duration-150">
+            <td class="p-3 text-gray-600">Software Engineer</td>
+            <td class="p-3 text-gray-600">Jane Smith</td>
+            <td class="p-3 text-gray-600">$85,000</td>
           </tr>
-          <tr>
-            <td>HR Manager</td>
-            <td>John Doe</td>
-            <td>$70,000</td>
+          <tr class="hover:bg-gray-50 transition duration-150">
+            <td class="p-3 text-gray-600">HR Manager</td>
+            <td class="p-3 text-gray-600">John Doe</td>
+            <td class="p-3 text-gray-600">$70,000</td>
           </tr>
-          <tr>
-            <td>Software Engineer</td>
-            <td>Jane Smith</td>
-            <td>$85,000</td>
+          <tr class="hover:bg-gray-50 transition duration-150">
+            <td class="p-3 text-gray-600">Software Engineer</td>
+            <td class="p-3 text-gray-600">Jane Smith</td>
+            <td class="p-3 text-gray-600">$85,000</td>
           </tr>
-          <tr>
-            <td>HR Manager</td>
-            <td>John Doe</td>
-            <td>$70,000</td>
+          <tr class="hover:bg-gray-50 transition duration-150">
+            <td class="p-3 text-gray-600">HR Manager</td>
+            <td class="p-3 text-gray-600">John Doe</td>
+            <td class="p-3 text-gray-600">$70,000</td>
           </tr>
-          <tr>
-            <td>Software Engineer</td>
-            <td>Jane Smith</td>
-            <td>$85,000</td>
+          <tr class="hover:bg-gray-50 transition duration-150">
+            <td class="p-3 text-gray-600">Software Engineer</td>
+            <td class="p-3 text-gray-600">Jane Smith</td>
+            <td class="p-3 text-gray-600">$85,000</td>
           </tr>
-          <tr>
-            <td>HR Manager</td>
-            <td>John Doe</td>
-            <td>$70,000</td>
+          <tr class="hover:bg-gray-50 transition duration-150">
+            <td class="p-3 text-gray-600">HR Manager</td>
+            <td class="p-3 text-gray-600">John Doe</td>
+            <td class="p-3 text-gray-600">$70,000</td>
           </tr>
-          
         </tbody>
       </table>
     </div>
