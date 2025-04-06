@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common'; // For *ngFor
 import { MatIconModule } from '@angular/material/icon'; // For mat-icon
 import { MatListModule } from '@angular/material/list'; // For mat-list-item
 import { RouterLink } from '@angular/router'; // For routerLink
+import {Router} from '@angular/router'; // For router
 
 interface MenuItem {
   label: string;
@@ -28,6 +29,8 @@ export class CustomSidenavComponent {
     this.sideNavClose.set(value);
   }
 
+  constructor (private router: Router) {}
+
   pictureSize = computed(() => this.sideNavClose() ? '32' : '100');
   menuItems = signal<MenuItem[]>([
     { label: 'Dashboard', icon: 'dashboard', route: '/' },
@@ -40,4 +43,13 @@ export class CustomSidenavComponent {
     { label: 'Candidates', icon: 'person_search', route: '/candidates' },
   
   ]);
+
+  // Logout 
+  logout() {
+    console.log('Logout clicked');
+    // remove the token from localstorage
+    localStorage.removeItem('token');
+    // redirect to login page
+    this.router.navigateByUrl('/login');
+  }
 }

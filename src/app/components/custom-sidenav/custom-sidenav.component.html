@@ -34,7 +34,7 @@
     <!-- Logout Section -->
     <div class=" px-4 pb-6 ">
       <mat-nav-list class="w-full border-t-2 border-gray-200">
-        <a mat-list-item class="flex items-center w-full">
+        <a mat-list-item class="flex items-center w-full" (click)="logout()">
           <mat-icon matListItemIcon >logout</mat-icon>
           <span matListItemTitle *ngIf="!sideNavClose()">Logout</span>
         </a>

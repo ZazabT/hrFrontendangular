@@ -1,58 +1,94 @@
 <div class="flex items-center justify-between h-screen flex-col py-6">
-    <!-- Logo Section -->
-    <div class="text-center mb-6">
-      <img src="logo.png" alt="Logo" class="w-42 h-42 mx-auto">
+  <!-- Logo Section -->
+  <div class="text-center mb-6">
+    <img src="logo3.png" alt="Logo" class="w-42 h-24 mx-auto">
+  </div>
+
+  <div class="login-container w-full max-w-md">
+    <!-- Title Section -->
+    <div class="text-center mb-8">
+      <h1 class="text-3xl font-bold text-gray-800 tracking-tight">Welcome Back!</h1>
+      <p class="text-gray-600 mt-2 text-sm">Please login to continue to your dashboard</p>
     </div>
 
-    <div class="login-container p-8 w-full max-w-md">
-      <!-- Title Section -->
-      <div class="text-center mb-8">
-        <h1 class="text-3xl font-bold text-gray-800 tracking-tight">Welcome Back!</h1>
-        <p class="text-gray-600 mt-2 text-sm">Please login to continue to your dashboard</p>
-      </div>
-    
-      <!-- USER NAME FIELD -->
-      <mat-form-field  class="w-full mb-4">
-        <mat-label>Email</mat-label>
-        <input matInput type="email" placeholder="example@example.com" required class="focus:ring-2 focus:ring-lime-500">
-      </mat-form-field>
-    
-      <!-- PASSWORD FIELD -->
-      <mat-form-field  class="w-full mb-6">
-        <mat-label>Password</mat-label>
-        <input matInput type="password" required class="focus:ring-2 focus:ring-lime-500">
-      </mat-form-field>
-    
-      <!-- LOGIN BUTTON -->
-      <button class="w-full mt-4 cursor-pointer bg-lime-700 text-white py-3 px-4 rounded-lg hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 focus:outline-none shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 ease-in-out uppercase tracking-wide font-semibold">
-        Login
-      </button>
-    
-      <!-- SIGN IN WITH GOOGLE BUTTON -->
-      <button class="w-full mt-4 flex items-center justify-center bg-white text-gray-700 py-3 px-4 rounded-lg border border-gray-300 hover:bg-gray-50 focus:ring-4 focus:ring-blue-200 focus:outline-none shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 ease-in-out font-medium">
-        <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12.24 10.32v3.26h5.03c-.2 1.06-.81 1.91-1.67 2.51v2.08h2.7c1.58-1.45 2.5-3.58 2.5-6.09 0-.58-.05-1.15-.15-1.7h-8.41z" fill="#4285F4"/>
-          <path d="M12 21.5c2.97 0 5.46-1.01 7.28-2.73l-3.37-2.62c-.99.67-2.25 1.06-3.91 1.06-3 0-5.54-2.03-6.45-4.76H2.64v2.98C4.45 19.06 7.95 21.5 12 21.5z" fill="#34A853"/>
-          <path d="M5.55 13.47c-.23-.69-.36-1.43-.36-2.2s.13-1.51.36-2.2V6.09H2.64C1.95 7.58 1.5 9.32 1.5 11.27c0 1.95.45 3.69 1.14 5.18l2.91-3.98z" fill="#FBBC05"/>
-          <path d="M12 5.44c1.64 0 3.11.57 4.27 1.68l3.2-3.2C17.46 2.01 14.97 1 12 1 7.95 1 4.45 3.44 2.64 6.97l2.91 2.98c.91-2.73 3.45-4.51 6.45-4.51z" fill="#EA4335"/>
-        </svg>
-        Sign in with Google
-      </button>
-    
-      <!-- Forgot password link -->
-      <div class="text-end mt-3">
-        <a href="#" class="text-sm font-bold text-gray-600 hover:underline hover:text-gray-800 transition">Forgot password?</a>
-      </div>
+    <!-- USER NAME FIELD -->
+    <mat-form-field class="w-full mb-4">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        type="email"
+        placeholder="example@example.com"
+        required
+        [(ngModel)]="email"
+        name="email"
+        class="focus:ring-2"
+      />
+    </mat-form-field>
+
+    <!-- PASSWORD FIELD -->
+    <mat-form-field class="w-full mb-6">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        type="password"
+        required
+        [(ngModel)]="password"
+        name="password"
+        class="focus:ring-2"
+      />
+    </mat-form-field>
+
+    <!-- Error Message Display -->
+    <div *ngIf="errorMessage" class="text-red-500 text-center mt-4">
+      {{ errorMessage }}
     </div>
-    
-   <!-- Register Link -->
-   <div class="text-center mt-6">
+
+    <!-- LOGIN BUTTON -->
+    <button
+      (click)="login()"
+      class="w-full mt-4 cursor-pointer bg-lime-700 text-white py-3 px-4 rounded-lg hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 focus:outline-none shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 ease-in-out uppercase tracking-wide font-semibold"
+    >
+      Login
+    </button>
+
+    <!-- SIGN IN WITH GOOGLE BUTTON -->
+    <button
+      class="w-full mt-4 flex items-center justify-center bg-white text-gray-700 py-3 px-4 rounded-lg border border-gray-300 hover:bg-gray-50 focus:ring-4 focus:ring-blue-200 focus:outline-none shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 ease-in-out font-medium"
+    >
+      <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M12.24 10.32v3.26h5.03c-.2 1.06-.81 1.91-1.67 2.51v2.08h2.7c1.58-1.45 2.5-3.58 2.5-6.09 0-.58-.05-1.15-.15-1.7h-8.41z"
+          fill="#4285F4"
+        />
+        <path
+          d="M12 21.5c2.97 0 5.46-1.01 7.28-2.73l-3.37-2.62c-.99.67-2.25 1.06-3.91 1.06-3 0-5.54-2.03-6.45-4.76H2.64v2.98C4.45 19.06 7.95 21.5 12 21.5z"
+          fill="#34A853"
+        />
+        <path
+          d="M5.55 13.47c-.23-.69-.36-1.43-.36-2.2s.13-1.51.36-2.2V6.09H2.64C1.95 7.58 1.5 9.32 1.5 11.27c0 1.95.45 3.69 1.14 5.18l2.91-3.98z"
+          fill="#FBBC05"
+        />
+        <path
+          d="M12 5.44c1.64 0 3.11.57 4.27 1.68l3.2-3.2C17.46 2.01 14.97 1 12 1 7.95 1 4.45 3.44 2.64 6.97l2.91 2.98c.91-2.73 3.45-4.51 6.45-4.51z"
+          fill="#EA4335"
+        />
+      </svg>
+      Sign in with Google
+    </button>
+
+    <!-- Forgot password link -->
+    <div class="text-end mt-3">
+      <a href="#" class="text-sm font-bold text-gray-600 hover:underline hover:text-gray-800 transition">Forgot password?</a>
+    </div>
+  </div>
+
+  <!-- Register Link -->
+  <div class="text-center mt-6">
     <p class="text-sm text-gray-700 font-medium tracking-wide">
-      Don’t have an account? 
+      Don’t have an account?
       <a href="/register" class="text-blue-600 font-semibold hover:text-blue-800 hover:underline underline-offset-4 transition-all duration-300 ease-in-out">
         Register here
       </a>
     </p>
   </div>
 </div>
-
