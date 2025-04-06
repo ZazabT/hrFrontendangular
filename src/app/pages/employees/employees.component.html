@@ -1,71 +1,146 @@
-<div class="employees-container">
-    <!-- Heading -->
-    <h1 class="page-title">Employees Overview</h1>
-    
-    <!-- Table -->
-    <table mat-table [dataSource]="employeesDataSource" class="mat-elevation-z8 employees-table">
+<div class="p-6 bg-gray-50 min-h-screen">
+  <!-- Heading -->
+  <div class="flex justify-between items-center mb-8 p-6 ">
+    <div class="space-y-3">
+      <h1 class="text-3xl font-bold text-gray-800 tracking-tight">Employees</h1>
+      <p class="text-gray-600 text-base">View and manage your employee records efficiently</p>
+    </div>
+    <button (click)="openModal()" 
+      class="flex items-center gap-2 bg-lime-800 text-white px-6 py-2.5 rounded-lg shadow-md hover:bg-lime-900 focus:ring-4 focus:ring-lime-300 transition duration-300">
+      <mat-icon class="text-lg">add</mat-icon>
+      <span class="font-medium">Add Employee</span>
+    </button>
+  </div>
+
+  <!-- Filter -->
+  <mat-form-field  class="w-full mb-6">
+    <mat-label class="text-gray-600">Search Employees</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Filter by name, email..." 
+      class="text-gray-700">
+  </mat-form-field>
+
+  <!-- Table -->
+  <div class="relative min-h-[200px] max-h-[calc(100vh-300px)] overflow-auto rounded-xl shadow-lg bg-white">
+    <table mat-table [dataSource]="dataSource" matSort class="w-full">
       <!-- ID Column -->
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> ID </th>
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header 
+          class="bg-lime-50 p-4 font-semibold text-gray-700 sticky top-0 z-10">ID</th>
+        <td mat-cell *matCellDef="let element" class="p-4 text-gray-600">{{element.id}}</td>
       </ng-container>
-  
+
       <!-- First Name Column -->
       <ng-container matColumnDef="firstName">
-        <th mat-header-cell *matHeaderCellDef> First Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header 
+          class="bg-lime-50 p-4 font-semibold text-gray-700 sticky top-0 z-10">First Name</th>
+        <td mat-cell *matCellDef="let element" class="p-4 text-gray-600">{{element.firstName}}</td>
       </ng-container>
-  
+
       <!-- Last Name Column -->
       <ng-container matColumnDef="lastName">
-        <th mat-header-cell *matHeaderCellDef> Last Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header 
+          class="bg-lime-50 p-4 font-semibold text-gray-700 sticky top-0 z-10">Last Name</th>
+        <td mat-cell *matCellDef="let element" class="p-4 text-gray-600">{{element.lastName}}</td>
       </ng-container>
-  
+
       <!-- Email Column -->
       <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef> Email </th>
-        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header 
+          class="bg-lime-50 p-4 font-semibold text-gray-700 sticky top-0 z-10">Email</th>
+        <td mat-cell *matCellDef="let element" class="p-4 text-gray-600">{{element.email}}</td>
       </ng-container>
-  
+
       <!-- Phone Column -->
       <ng-container matColumnDef="phone">
-        <th mat-header-cell *matHeaderCellDef> Phone </th>
-        <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header 
+          class="bg-lime-50 p-4 font-semibold text-gray-700 sticky top-0 z-10">Phone</th>
+        <td mat-cell *matCellDef="let element" class="p-4 text-gray-600">{{element.phone}}</td>
       </ng-container>
-  
+
       <!-- Address Column -->
       <ng-container matColumnDef="address">
-        <th mat-header-cell *matHeaderCellDef> Address </th>
-        <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header 
+          class="bg-lime-50 p-4 font-semibold text-gray-700 sticky top-0 z-10">Address</th>
+        <td mat-cell *matCellDef="let element" class="p-4 text-gray-600">{{element.address}}</td>
       </ng-container>
-  
-      <!-- Birth Date Column -->
-      <ng-container matColumnDef="birthDate">
-        <th mat-header-cell *matHeaderCellDef> Birth Date </th>
-        <td mat-cell *matCellDef="let element"> {{element.birthDate | date:'mediumDate'}} </td>
-      </ng-container>
-  
+
       <!-- Hire Date Column -->
       <ng-container matColumnDef="hireDate">
-        <th mat-header-cell *matHeaderCellDef> Hire Date </th>
-        <td mat-cell *matCellDef="let element"> {{element.hireDate | date:'mediumDate'}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header 
+          class="bg-lime-50 p-4 font-semibold text-gray-700 sticky top-0 z-10">Hire Date</th>
+        <td mat-cell *matCellDef="let element" class="p-4 text-gray-600">{{element.hireDate | date}}</td>
       </ng-container>
-  
-      <!-- Job Position ID Column -->
-      <ng-container matColumnDef="jobPositionId">
-        <th mat-header-cell *matHeaderCellDef> Job Position ID </th>
-        <td mat-cell *matCellDef="let element"> {{element.jobPositionId}} </td>
-      </ng-container>
-  
+
       <!-- Created At Column -->
       <ng-container matColumnDef="createdAt">
-        <th mat-header-cell *matHeaderCellDef> Created At </th>
-        <td mat-cell *matCellDef="let element"> {{element.createdAt | date:'medium'}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header 
+          class="bg-lime-50 p-4 font-semibold text-gray-700 sticky top-0 z-10">Created At</th>
+        <td mat-cell *matCellDef="let element" class="p-4 text-gray-600">{{element.createdAt | date}}</td>
       </ng-container>
-  
-      <!-- Header and Row Definitions -->
-      <tr mat-header-row *matHeaderRowDef="employeesColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: employeesColumns;"></tr>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef 
+          class="bg-lime-50 p-4 font-semibold text-gray-700 sticky top-0 z-10">Actions</th>
+        <td mat-cell *matCellDef="let element" class="p-4">
+          <button mat-icon-button class="text-blue-600 hover:text-blue-800 transition duration-200">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button class="text-red-600 hover:text-red-800 transition duration-200">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="employeesColumns" class="border-b border-gray-200"></tr>
+      <tr mat-row *matRowDef="let row; columns: employeesColumns;" 
+        class="hover:bg-lime-50 border-b border-gray-100 transition duration-150"></tr>
     </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons 
+      class="bg-white border-t border-gray-200 sticky bottom-0 z-10"></mat-paginator>
+  </div>
+
+  <!-- Modal -->
+  <div *ngIf="isModalOpen" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4">
+    <div class="bg-white p-8 rounded-xl w-full max-w-md shadow-2xl">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">Add New Employee</h2>
+      <form class="space-y-6">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label class="text-gray-600">First Name</mat-label>
+          <input matInput class="text-gray-700" placeholder="Enter first name">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label class="text-gray-600">Last Name</mat-label>
+          <input matInput class="text-gray-700" placeholder="Enter last name">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label class="text-gray-600">Email</mat-label>
+          <input matInput class="text-gray-700" placeholder="Enter email">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label class="text-gray-600">Phone</mat-label>
+          <input matInput class="text-gray-700" placeholder="Enter phone number">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label class="text-gray-600">Address</mat-label>
+          <input matInput class="text-gray-700" placeholder="Enter address">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label class="text-gray-600">Hire Date</mat-label>
+          <input matInput type="date" class="text-gray-700">
+        </mat-form-field>
+      </form>
+      <div class="flex justify-end gap-3 mt-6">
+        <button mat-button (click)="closeModal()" 
+          class="px-5 py-2 text-gray-600 hover:text-gray-800 rounded-lg hover:bg-gray-100 transition duration-200">
+          Cancel
+        </button>
+        <button mat-raised-button (click)="addEmployee()"
+          class="px-5 py-2 bg-lime-800 text-white rounded-lg hover:bg-lime-900 shadow-md transition duration-200">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
 </div>

@@ -7,16 +7,6 @@
     min-height: 100vh; /* Full height for better layout */
   }
   
-  /* Page Title */
-  .page-title {
-    font-size: 2.5rem; /* Larger title for emphasis */
-    font-weight: 700; /* Bolder for impact */
-    color: #1a73e8; /* Modern blue color */
-    margin-bottom: 30px; /* More space below */
-    text-align: center;
-    letter-spacing: 0.5px; /* Slight spacing for elegance */
-    text-transform: uppercase; /* Uppercase for a strong header */
-  }
   
   /* Table Styling */
   .departments-table {
