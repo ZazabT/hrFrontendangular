@@ -1,9 +1,9 @@
 import { Component, computed, Input, signal } from '@angular/core';
-import { CommonModule } from '@angular/common'; // For *ngFor
-import { MatIconModule } from '@angular/material/icon'; // For mat-icon
-import { MatListModule } from '@angular/material/list'; // For mat-list-item
-import { RouterLink } from '@angular/router'; // For routerLink
-import {Router} from '@angular/router'; // For router
+import { CommonModule } from '@angular/common'; 
+import { MatIconModule } from '@angular/material/icon'; 
+import { MatListModule } from '@angular/material/list'; 
+import { RouterLink } from '@angular/router'; 
+import {Router} from '@angular/router';
 
 interface MenuItem {
   label: string;

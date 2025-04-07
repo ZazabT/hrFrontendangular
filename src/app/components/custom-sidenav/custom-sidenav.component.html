@@ -18,21 +18,21 @@
   </div>
 
   <!-- Navigation Section -->
-  <div class="flex-1 mt-4 px-4 justify-center ml-5">
-    <div class="space-y-1">
+  <div class="flex-1 mt-4 px-4 justify-center ml-8">
+    <div class="space-y-2">
       <div
         *ngFor="let item of menuItems()"
         [routerLink]="item.route"
-        class="flex items-center w-full px-4 py-3 text-gray-700 rounded-lg hover:bg-lime-50 hover:text-lime-800 transition duration-200 cursor-pointer"
+        class="flex items-center w-full px-4 py-3 text-gray-500 rounded-lg hover:bg-lime-50 hover:text-lime-800 transition duration-200 cursor-pointer"
       >
         <mat-icon class="mr-3 text-lime-600">{{ item.icon }}</mat-icon>
-        <span class="font-medium">{{ item.label }}</span>
+        <span class="font-semibold text-base group-hover:font-bold text-gray-500">{{ item.label }}</span>
       </div>
-    </div>
+    </div> 
   </div>
 
   <!-- Logout Section -->
-  <div class="px-4 pb-6 border-t border-gray-200">
+  <div class="px-4 pb-6 border-t ml-8 border-gray-200">
     <a
       mat-list-item
       (click)="logout()"
