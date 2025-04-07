@@ -9,6 +9,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-departments',
@@ -21,7 +22,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatFormFieldModule,
     MatInputModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    FormsModule
   ],
   templateUrl: './departments.component.html',
   styleUrl: './departments.component.css'
@@ -35,6 +37,9 @@ export class DepartmentsComponent implements AfterViewInit {
 
   isModalOpen = false;
 
+  departmentName: string = '';
+
+  departmentDescription: string = '';
   constructor(private departmentService: DepartmentService) {
     this.dataSource = new MatTableDataSource<Department>([]);
   }

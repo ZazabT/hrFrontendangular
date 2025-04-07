@@ -10,7 +10,7 @@
 
     <!-- Add Department Button -->
     <button (click)="openModal()" 
-      class="flex items-center gap-2 bg-lime-800 text-white px-5 py-2.5 rounded-lg shadow-md hover:bg-lime-900 focus:ring-4 focus:ring-lime-300 transition duration-200 ease-in-out">
+      class="flex items-center gap-2 bg-lime-800 hover:cursor-pointer text-white px-5 py-2.5 rounded-lg shadow-md hover:bg-lime-900 focus:ring-4 focus:ring-lime-300 transition duration-200 ease-in-out">
       <mat-icon class="text-lg">add</mat-icon>
       <span class="font-medium">Add Department</span>
     </button>
@@ -69,28 +69,42 @@
   </div>
 
   <!-- Modal -->
-  <div *ngIf="isModalOpen" class="fixed inset-0  bg-opacity-50 flex items-center justify-center">
-    <div class="bg-white p-6 rounded-lg w-full max-w-md">
-      <h2 class="text-xl font-bold mb-4">Add New Department</h2>
-            <mat-form-field>
-              <mat-label>Input</mat-label>
-              <input matInput>
-            </mat-form-field>
-            <mat-form-field>
-              <mat-label>Textarea</mat-label>
-              <textarea matInput></textarea>
-            </mat-form-field>
-      <div class="flex justify-end gap-2 mt-4">
-        <button mat-button (click)="closeModal()" 
-          class="px-4 py-2 text-gray-600 hover:text-gray-800">
-          Cancel
-        </button>
-        <button mat-raised-button color="primary" (click)="addDepartment()"
-          class="px-4 py-2 bg-lime-900 text-white rounded hover:bg-lime-900">
-          Save
-        </button>
-      </div>
+  <div *ngIf="isModalOpen" class="fixed inset-0 bg-gray-800/60 flex  justify-center items-center z-50">
+    <div class="bg-white p-8 rounded-xl w-full max-w-md shadow-lg flex flex-col items-center transform transition-all duration-300 scale-100" (click)="$event.stopPropagation()">
+      <!-- Modal content remains the same -->
+      <h2 class="text-2xl font-semibold text-gray-800 mb-6">Add New Department</h2>
+      <form class="w-full space-y-6" (ngSubmit)="addDepartment()" #departmentForm="ngForm">
+        <mat-form-field  class="w-full">
+          <mat-label>Department Name</mat-label>
+          <input matInput placeholder="Enter department name" required name="name" [(ngModel)]="departmentName" #nameCtrl="ngModel" aria-label="Department Name">
+          <mat-error *ngIf="nameCtrl.invalid && nameCtrl.touched">Name is required</mat-error>
+        </mat-form-field>
+        <mat-form-field  class="w-full">
+          <mat-label>Description</mat-label>
+          <textarea matInput placeholder="Enter department description" rows="4" name="description" [(ngModel)]="departmentDescription" aria-label="Department Description"></textarea>
+        </mat-form-field>
+        <div class="flex justify-end gap-3 mt-6">
+          <div class="flex justify-end gap-4 mt-6">
+            <button 
+              type="button" 
+              (click)="closeModal()" 
+              class="px-6 py-2.5 text-red-600 font-semibold bg-gray-100 rounded-3xl hover:bg-gray-200 hover:text-red-900 focus:ring-2 focus:ring-red-300 focus:outline-none transition-all duration-200 ease-in-out" 
+              aria-label="Cancel"
+            >
+              Cancel
+            </button>
+            <button 
+              type="submit" 
+              color="primary" 
+              [disabled]="departmentForm.invalid" 
+              class="px-6 py-2.5 bg-lime-700 font-semibold text-white rounded-3xl shadow-md hover:bg-lime-800 focus:ring-2 focus:ring-lime-100 focus:ring-opacity-50 focus:outline-none disabled:bg-lime-100  disabled:text-gray-800 disabled:cursor-not-allowed transition-all duration-200 ease-in-out" 
+              aria-label="Save Department"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
-
-</div>
+</div> 

@@ -1,100 +1,55 @@
-/* Container for the entire component */
-.positions-container {
-    padding: 30px; /* Increased padding for more breathing room */
-    max-width: 1280px; /* Slightly wider for modern screens */
-    margin: 0 auto;
-    background-color: #fafafa; /* Light background for contrast */
-    min-height: 100vh; /* Full height for better layout */
-}
-  
-/* Page Title */
-.page-title {
-    font-size: 2.5rem; /* Larger title for emphasis */
-    font-weight: 700; /* Bolder for impact */
-    color: #1a73e8; /* Modern blue color */
-    margin-bottom: 30px; /* More space below */
-    text-align: center;
-    letter-spacing: 0.5px; /* Slight spacing for elegance */
-    text-transform: uppercase; /* Uppercase for a strong header */
-}
 
-/* Table Styling */
-.positions-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #ffffff;
-    overflow: hidden;
-    border-radius: 8px; /* Rounded corners for the table */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Softer shadow */
-}
+
   
-/* Header Cells */
-th.mat-header-cell {
-    background-color: #1a73e8; /* Blue header for contrast */
-    font-size: 1.1rem; /* Slightly larger text */
-    font-weight: 600;
-    color: #ffffff; /* White text on blue background */
-    padding: 18px; /* More padding */
-    text-align: left;
-    border-bottom: 3px solid #1565c0; /* Darker blue border */
-    text-transform: uppercase; /* Consistent with title */
-}
-  
-/* Data Cells */
-td.mat-cell {
+  /* Data Cells */
+  td.mat-cell {
     padding: 18px; /* Match header padding */
     font-size: 0.95rem; /* Slightly larger for readability */
     color: #333; /* Darker text for better contrast */
     border-bottom: 1px solid #e0e0e0; /* Slightly darker border */
     vertical-align: middle; /* Center content vertically */
-}
-
-/* Row Hover Effect */
-tr.mat-row:hover {
-    background-color: #e8f0fe; /* Light blue hover effect */
-    transition: background-color 0.3s ease; /* Smoother transition */
-    cursor: pointer; /* Indicate interactivity */
-}
-
-/* Elevation and Shadow */
-.mat-elevation-z8 {
+  }
+  
+  
+  /* Elevation and Shadow */
+  .mat-elevation-z8 {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.06); /* Stronger shadow */
     border-radius: 8px; /* Match table rounding */
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .positions-container {
-        padding: 15px; /* Reduced padding on smaller screens */
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .departments-container {
+      padding: 15px; /* Reduced padding on smaller screens */
     }
-
-    .positions-table {
-        font-size: 0.9rem; /* Slightly larger than before for readability */
+  
+    .departments-table {
+      font-size: 0.9rem; /* Slightly larger than before for readability */
     }
-
+  
     th.mat-header-cell, td.mat-cell {
-        padding: 12px; /* Consistent smaller padding */
+      padding: 12px; /* Consistent smaller padding */
     }
-
+  
     .page-title {
-        font-size: 1.75rem; /* Adjusted for mobile */
-        margin-bottom: 20px;
+      font-size: 1.75rem; /* Adjusted for mobile */
+      margin-bottom: 20px;
     }
-}
-
-/* Extra Small Screens (e.g., phones) */
-@media (max-width: 480px) {
-    .positions-table {
-        display: block; /* Stack table for very small screens */
-        overflow-x: auto; /* Allow horizontal scrolling if needed */
+  }
+  
+  /* Extra Small Screens (e.g., phones) */
+  @media (max-width: 480px) {
+    .departments-table {
+      display: block; /* Stack table for very small screens */
+      overflow-x: auto; /* Allow horizontal scrolling if needed */
     }
-
+  
     th.mat-header-cell, td.mat-cell {
-        padding: 10px;
-        font-size: 0.85rem;
+      padding: 10px;
+      font-size: 0.85rem;
     }
-
+  
     .page-title {
-        font-size: 1.25rem;
+      font-size: 1.25rem;
     }
-}
+  }

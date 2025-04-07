@@ -1,53 +1,114 @@
-<div class="positions-container">
-    <!-- Heading -->
-    <h1 class="page-title">Job Positions Overview</h1>
-    
-    <!-- Table -->
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 positions-table">
+<div class="p-4">
+
+  <!-- Heading -->
+  <div class="flex justify-between items-center mb-8 p-6 ">
+    <!-- Header Title and Description -->
+    <div class="space-y-2">
+      <h1 class="text-3xl font-bold text-gray-800 tracking-tight">Job Positions</h1>
+      <p class="text-gray-600 text-sm md:text-base">View and manage your Job Positions records efficiently</p>
+    </div>
+
+    <!-- Add Job position Button -->
+    <button (click)="openModal()" 
+      class="flex items-center gap-2 bg-lime-800 text-white px-5 py-2.5 rounded-lg shadow-md hover:bg-lime-900 focus:ring-4 focus:ring-lime-300 transition duration-200 ease-in-out">
+      <mat-icon class="text-lg">add</mat-icon>
+      <span class="font-medium">Add JobPosition</span>
+    </button>
+  </div>
+  <!-- Filter  -->
+  <mat-form-field appearance="fill" class="w-full mb-4">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search departments..." class="w-full">
+  </mat-form-field>
+
+  <!-- Table -->
+  <div class="relative min-h-[200px] max-h-[calc(100vh-300px)] overflow-auto rounded-xl shadow-lg bg-white">
+    <table mat-table [dataSource]="dataSource" matSort class="w-full shadow-lg">
       <!-- ID Column -->
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> ID </th>
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bg-gray-100 p-4 font-bold">ID</th>
+        <td mat-cell *matCellDef="let element" class="p-4">{{element.id}}</td>
       </ng-container>
-  
-      <!-- Job Title Column -->
+
+      <!-- jobTitle Column -->
       <ng-container matColumnDef="jobTitle">
-        <th mat-header-cell *matHeaderCellDef> Job Title </th>
-        <td mat-cell *matCellDef="let element"> {{element.jobTitle}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bg-gray-100 p-4 font-bold">JobTitle</th>
+        <td mat-cell *matCellDef="let element" class="p-4">{{element.jobTitle}}</td>
       </ng-container>
-  
-      <!-- Job Description Column -->
+
+      <!-- jobDescription Column -->
       <ng-container matColumnDef="jobDescription">
-        <th mat-header-cell *matHeaderCellDef> Job Description </th>
-        <td mat-cell *matCellDef="let element"> {{element.jobDescription}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bg-gray-500 p-4 font-bold">JobDescription</th>
+        <td mat-cell *matCellDef="let element" class="p-4">{{element.jobDescription}}</td>
       </ng-container>
-  
-      <!-- Min Salary Column -->
+
+      <!-- minSalary Column -->
       <ng-container matColumnDef="minSalary">
-        <th mat-header-cell *matHeaderCellDef> Min Salary </th>
-        <td mat-cell *matCellDef="let element"> {{element.minSalary | currency}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bg-gray-500 p-4 font-bold">MinSalary</th>
+        <td mat-cell *matCellDef="let element" class="p-4">{{element.minSalary}}</td>
       </ng-container>
-  
-      <!-- Max Salary Column -->
+
+      <!-- maxSalary Column -->
       <ng-container matColumnDef="maxSalary">
-        <th mat-header-cell *matHeaderCellDef> Max Salary </th>
-        <td mat-cell *matCellDef="let element"> {{element.maxSalary | currency}} </td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="bg-gray-500 p-4 font-bold">MaxSalary</th>
+          <td mat-cell *matCellDef="let element" class="p-4">brr{{element.maxSalary}}</td>
       </ng-container>
-  
-      <!-- Department ID Column -->
+
+      <!-- jobDescription Column -->
       <ng-container matColumnDef="departmentId">
-        <th mat-header-cell *matHeaderCellDef> Department ID </th>
-        <td mat-cell *matCellDef="let element"> {{element.departmentId}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bg-gray-500 p-4 font-bold">departmentId</th>
+        <td mat-cell *matCellDef="let element" class="p-4">{{element.departmentId}}</td>
       </ng-container>
-  
+
       <!-- Created At Column -->
       <ng-container matColumnDef="createdAt">
-        <th mat-header-cell *matHeaderCellDef> Created At </th>
-        <td mat-cell *matCellDef="let element"> {{element.createdAt | date:'medium'}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bg-gray-100 p-4 font-bold">Created At</th>
+        <td mat-cell *matCellDef="let element" class="p-4">{{element.createdAt | date}}</td>
       </ng-container>
-  
-      <!-- Header and Row Definitions -->
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="bg-gray-100 p-4 font-bold">Actions</th>
+        <td mat-cell *matCellDef="let element" class="p-4">
+          <button mat-icon-button class="text-blue-600 hover:text-blue-800">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button class="text-red-600 hover:text-red-800">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns" class="border-b"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="hover:bg-gray-50 border-b"></tr>
     </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons class="bg-white sticky bottom-0"></mat-paginator>
+  </div>
+
+  <!-- Modal -->
+  <div *ngIf="isModalOpen" class="fixed inset-0  bg-opacity-50 flex items-center justify-center">
+    <div class="bg-white p-6 rounded-lg w-full max-w-md">
+      <h2 class="text-xl font-bold mb-4">Add New Department</h2>
+            <mat-form-field>
+              <mat-label>Input</mat-label>
+              <input matInput>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Textarea</mat-label>
+              <textarea matInput></textarea>
+            </mat-form-field>
+      <div class="flex justify-end gap-2 mt-4">
+        <button mat-button (click)="closeModal()" 
+          class="px-4 py-2 text-gray-600 hover:text-gray-800">
+          Cancel
+        </button>
+        <button mat-raised-button color="primary" (click)="addPositon()"
+          class="px-4 py-2 bg-lime-900 text-white rounded hover:bg-lime-900">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+
 </div>
