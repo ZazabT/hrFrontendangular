@@ -4,3 +4,4 @@ export interface Department {
     departmentDescription: string; 
     createdAt: Date | string; 
   }
+  

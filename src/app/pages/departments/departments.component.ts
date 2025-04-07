@@ -10,6 +10,7 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';  // Import MatSnackBar
 
 @Component({
   selector: 'app-departments',
@@ -23,11 +24,13 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatSortModule,
     MatPaginatorModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule
   ],
   templateUrl: './departments.component.html',
   styleUrl: './departments.component.css'
 })
+
 export class DepartmentsComponent implements AfterViewInit {
   displayedColumns: string[] = ['id', 'name', 'departmentDescription', 'createdAt', 'actions'];
   dataSource: MatTableDataSource<Department>;
@@ -36,11 +39,14 @@ export class DepartmentsComponent implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   isModalOpen = false;
-
   departmentName: string = '';
-
   departmentDescription: string = '';
-  constructor(private departmentService: DepartmentService) {
+  isLoading = false;
+
+  constructor(
+    private departmentService: DepartmentService,
+    private snackBar: MatSnackBar
+  ) {
     this.dataSource = new MatTableDataSource<Department>([]);
   }
 
@@ -61,6 +67,7 @@ export class DepartmentsComponent implements AfterViewInit {
       },
       error: (error) => {
         console.error('Error fetching departments:', error);
+        this.snackBar.open('Error fetching departments', 'Close', { duration: 3000 });
       }
     });
   }
@@ -82,9 +89,75 @@ export class DepartmentsComponent implements AfterViewInit {
     this.isModalOpen = false;
   }
 
+  // Add department
   addDepartment() {
     console.log('Department Added');
-    this.closeModal();
-    this.loadDepartments();
+    console.log('Name:', this.departmentName);
+    console.log('Description:', this.departmentDescription);
+
+    const newDepartment: Partial<Department> = {
+      name: this.departmentName,
+      departmentDescription: this.departmentDescription,
+    };
+
+    this.isLoading = true;
+
+    this.departmentService.addDepartment(newDepartment).subscribe({
+      next: (response) => {
+        console.log('Department Added Successfully:', response.department);
+        this.snackBar.open('Department deleted successfully!', 'Close', {
+          duration: 3000,
+          horizontalPosition: 'center',  
+          verticalPosition: 'top', 
+          panelClass: ['snack-bar-success']
+        });
+        this.closeModal();
+        this.loadDepartments(); 
+      },
+      error: (error) => {
+        console.error('Error adding department:', error);
+        this.snackBar.open('Error adding department' + error, 'Close', {
+          duration: 3000,
+          horizontalPosition: 'center',  
+          verticalPosition: 'top', 
+         });
+        this.isLoading = false;
+      },
+      complete: () => {
+        this.isLoading = false;
+      },
+    });
+  }
+
+  // Delete department
+  deleteDepartment(departmentId: number) {
+    console.log('Department Deleted');
+    if (confirm('Are you sure you want to delete this department?')) {
+      this.isLoading = true;
+      this.departmentService.deleteDepartment(departmentId).subscribe({
+        next: (response) => {
+          console.log('Department Deleted Successfully:', response.message);
+          this.snackBar.open('Department deleted successfully!', 'Close', {
+            duration: 3000,
+            horizontalPosition: 'center',  
+            verticalPosition: 'top', 
+            panelClass: ['snack-bar-success']      
+          });
+          this.loadDepartments(); 
+        },
+        error: (error) => {
+          console.error('Error deleting department:', error);
+          this.snackBar.open('Error deleting department'+ error, 'Close', {
+            duration: 3000,
+            horizontalPosition: 'center',  
+            verticalPosition: 'top', 
+           });
+          this.isLoading = false;
+        },
+        complete: () => {
+          this.isLoading = false;
+        },
+      });
+    }
   }
 }

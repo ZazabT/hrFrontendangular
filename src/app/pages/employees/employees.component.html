@@ -19,7 +19,8 @@
       class="text-gray-700">
   </mat-form-field>
 
-  <!-- Table -->
+  <div *ngIf="dataSource.data.length > 0; else noData">
+     <!-- Table -->
   <div class="relative min-h-[200px] max-h-[calc(100vh-300px)] overflow-auto rounded-xl shadow-lg bg-white">
     <table mat-table [dataSource]="dataSource" matSort class="w-full">
       <!-- ID Column -->
@@ -100,6 +101,14 @@
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons 
       class="bg-white border-t border-gray-200 sticky bottom-0 z-10"></mat-paginator>
   </div>
+  </div>
+ 
+  <!-- No Data Template -->
+  <ng-template #noData>
+    <div class="flex items-center justify-center h-full text-gray-500 text-xl font-medium">
+      No Employee records available
+    </div>
+  </ng-template>
 
   <!-- Modal -->
   <div *ngIf="isModalOpen" class="fixed inset-0  bg-opacity-50 flex items-center justify-center">
