@@ -138,35 +138,35 @@ export class EmployeesComponent implements AfterViewInit {
      });
    }
  
-  //  // Delete department
-  //  deleteDepartment(departmentId: number) {
-  //    console.log('Department Deleted');
-  //    if (confirm('Are you sure you want to delete this department?')) {
-  //      this.isLoading = true;
-  //      this.employeesService.deleteEmployee(departmentId).subscribe({
-  //        next: (response) => {
-  //          console.log('Department Deleted Successfully:', response.message);
-  //          this.snackBar.open('Department deleted successfully!', 'Close', {
-  //            duration: 3000,
-  //            horizontalPosition: 'center',  
-  //            verticalPosition: 'top', 
-  //            panelClass: ['snack-bar-success']      
-  //          });
-  //          this.loadEmployees(); 
-  //        },
-  //        error: (error) => {
-  //          console.error('Error deleting department:', error);
-  //          this.snackBar.open('Error deleting department'+ error, 'Close', {
-  //            duration: 3000,
-  //            horizontalPosition: 'center',  
-  //            verticalPosition: 'top', 
-  //           });
-  //          this.isLoading = false;
-  //        },
-  //        complete: () => {
-  //          this.isLoading = false;
-  //        },
-  //      });
-  //    }
-  //  }
+   // Delete employee
+   deleteEmployee(employeeId: number) {
+     console.log('Employee Deleted');
+     if (confirm('Are you sure you want to delete this department?')) {
+       this.isLoading = true;
+       this.employeesService.deleteEmployee(employeeId).subscribe({
+         next: (response) => {
+           console.log('Employee Deleted Successfully:', response.message);
+           this.snackBar.open('Employee deleted successfully!', 'Close', {
+             duration: 3000,
+             horizontalPosition: 'center',  
+             verticalPosition: 'top', 
+             panelClass: ['snack-bar-success']      
+           });
+           this.loadEmployees(); 
+         },
+         error: (error) => {
+           console.error('Error deleting Employee:', error);
+           this.snackBar.open('Error deleting Employee'+ error, 'Close', {
+             duration: 3000,
+             horizontalPosition: 'center',  
+             verticalPosition: 'top', 
+            });
+           this.isLoading = false;
+         },
+         complete: () => {
+           this.isLoading = false;
+         },
+       });
+     }
+   }
 }
