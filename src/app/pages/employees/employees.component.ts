@@ -36,8 +36,14 @@ export class EmployeesComponent implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   isModalOpen = false;
-  departmentName: string = '';
-  departmentDescription: string = '';
+  firstName:string = '';
+  lastName:string = '';
+  email:string = '';
+  phone:string = '';
+  address:string = '';
+  hireDate:Date | string | null = null; 
+  birthDate:Date | string | null = null; 
+  
   isLoading = false;
   
 
@@ -83,50 +89,54 @@ export class EmployeesComponent implements AfterViewInit {
     this.isModalOpen = false;
   }
 
- // Add department
-  //  addEmployee() {
-  //    console.log('Department Added');
-  //    console.log('Name:', this.departmentName);
-  //    console.log('Description:', this.departmentDescription);
+ // Add employee
+   addEmployee() {
+     console.log('Employee Added');
+     console.log('firstname:', this.firstName);
+     console.log('lastname:', this.lastName);
+     console.log('email:', this.email);
+     console.log('phone:', this.phone);
+     console.log('address:', this.address);
+     console.log('Hiredate:', this.hireDate )
+     console.log('BithDate:',this.birthDate)
+     const newDepartment: Partial<Employee> = {
+       firstName: this.firstName,
+       lastName: this.lastName,
+       email: this.email,
+       phone: this.phone,
+       address: this.address,
+       hireDate: this.hireDate,
+       birthDate:this.birthDate,
+     };
  
-  //    const newDepartment: Partial<Employee> = {
-  //      firstName: this.departmentName,
-  //      lastName: this.departmentDescription,
-  //      email: this.departmentDescription,
-  //      phone: this.departmentDescription,
-  //      address: this.departmentDescription,
-  //      birthDate: this.departmentDescription,
-  //      hireDate: this.departmentDescription,
-  //    };
+     this.isLoading = true;
  
-  //    this.isLoading = true;
- 
-  //    this.employeesService.addEmployee(newDepartment).subscribe({
-  //      next: (response) => {
-  //        console.log('Department Added Successfully:', response.employee);
-  //        this.snackBar.open('Department deleted successfully!', 'Close', {
-  //          duration: 3000,
-  //          horizontalPosition: 'center',  
-  //          verticalPosition: 'top', 
-  //          panelClass: ['snack-bar-success']
-  //        });
-  //        this.closeModal();
-  //        this.loadEmployees(); 
-  //      },
-  //      error: (error) => {
-  //        console.error('Error adding department:', error);
-  //        this.snackBar.open('Error adding department' + error, 'Close', {
-  //          duration: 3000,
-  //          horizontalPosition: 'center',  
-  //          verticalPosition: 'top', 
-  //         });
-  //        this.isLoading = false;
-  //      },
-  //      complete: () => {
-  //        this.isLoading = false;
-  //      },
-  //    });
-  //  }
+     this.employeesService.addEmployee(newDepartment).subscribe({
+       next: (response) => {
+         console.log('Employee Added Successfully:', response.employee);
+         this.snackBar.open('Employee Added successfully!', 'Close', {
+           duration: 3000,
+           horizontalPosition: 'center',  
+           verticalPosition: 'top', 
+           panelClass: ['snack-bar-success']
+         });
+         this.closeModal();
+         this.loadEmployees(); 
+       },
+       error: (error) => {
+         console.error('Error adding department:', error);
+         this.snackBar.open('Error adding department' + error, 'Close', {
+           duration: 3000,
+           horizontalPosition: 'center',  
+           verticalPosition: 'top', 
+          });
+         this.isLoading = false;
+       },
+       complete: () => {
+         this.isLoading = false;
+       },
+     });
+   }
  
   //  // Delete department
   //  deleteDepartment(departmentId: number) {

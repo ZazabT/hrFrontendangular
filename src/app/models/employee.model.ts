@@ -7,7 +7,7 @@ export interface Employee {
   phone: string | null;        
   address: string | null;   
   birthDate: Date | string | null; 
-  hireDate: Date | string;     
+  hireDate: Date | string | null;   
   jobPositionId: number;      
   createdAt: Date | string;    
 }
