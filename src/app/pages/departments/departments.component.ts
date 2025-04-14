@@ -10,7 +10,7 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';  // Import MatSnackBar
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-departments',
@@ -55,8 +55,12 @@ export class DepartmentsComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    if (this.paginator && this.sort) {
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    } else {
+      console.error('Paginator or Sort not initialized');
+    }
   }
 
   loadDepartments() {
@@ -64,6 +68,11 @@ export class DepartmentsComponent implements AfterViewInit {
       next: (response: any) => {
         this.dataSource.data = response.departments;
         console.log('Departments:', this.dataSource.data);
+        // Reassign paginator and sort after data is set
+        setTimeout(() => {
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        });
       },
       error: (error) => {
         console.error('Error fetching departments:', error);

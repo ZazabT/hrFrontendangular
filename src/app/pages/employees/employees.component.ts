@@ -56,16 +56,27 @@ export class EmployeesComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    if (this.paginator && this.sort) {
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    } else {
+      console.error('Paginator or Sort not initialized');
+    }
   }
+
 
   loadEmployees() {
     this.employeesService.getAllEmployees().subscribe({
       next: (response: any) => {
         this.dataSource.data = response.employees; // Assign data to dataSource
         console.log('Employees:', this.dataSource.data);
+        // Reassign paginator and sort after data is set
+        setTimeout(() => {
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        });
       },
+
       error: (error) => {
         console.error('Error fetching employees:', error);
       }

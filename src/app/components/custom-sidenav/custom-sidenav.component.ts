@@ -35,9 +35,9 @@ export class CustomSidenavComponent {
   menuItems = signal<MenuItem[]>([
     { label: 'Dashboard', icon: 'dashboard', route: '/' },
     { label: 'Departments', icon: 'business', route: '/departments' },
+    { label: 'Positions', icon: 'work', route: '/positions' },
     { label: 'Employees', icon: 'people', route: '/employees' },
     { label: 'Salaries', icon: 'attach_money', route: '/salaries' },
-    { label: 'Positions', icon: 'work', route: '/positions' },
     { label: 'Leaves', icon: 'event_busy', route: '/leaves' },
     { label: 'JobsList', icon: 'assignment', route: '/listings' },
     { label: 'Candidates', icon: 'person_search', route: '/candidates' },
